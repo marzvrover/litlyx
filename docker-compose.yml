@@ -18,7 +18,7 @@ services:
     ports:
       - "6379:6379"
     environment:
-      REDIS_USERNAME: ${REDIS_USER:-}
+      REDIS_USERNAME: ${REDIS_USER:-default}
       REDIS_PASSWORD: ${REDIS_PASS:?}
     volumes:
       - redis_data:/data
@@ -34,7 +34,7 @@ services:
       - MONGO_CONNECTION_STRING=mongodb://${MONGO_ROOT_USER:-root}:${MONGO_ROOT_PASS:?}@mongo:27017/Litlyx?authSource=admin
       - STREAM_NAME=LITLYX_STREAM
       - REDIS_URL=redis://redis:6379
-      - REDIS_USERNAME=${REDIS_USER:-}
+      - REDIS_USERNAME=${REDIS_USER:-default}
       - REDIS_PASSWORD=${REDIS_PASS:?}
     depends_on:
       - mongo
@@ -49,7 +49,7 @@ services:
       - MONGO_CONNECTION_STRING=mongodb://${MONGO_ROOT_USER:-root}:${MONGO_ROOT_PASS:?}@mongo:27017/Litlyx?authSource=admin
       - STREAM_NAME=LITLYX_STREAM
       - REDIS_URL=redis://redis:6379
-      - REDIS_USERNAME=${REDIS_USER:-}
+      - REDIS_USERNAME=${REDIS_USER:-default}
       - REDIS_PASSWORD=${REDIS_PASS:?}
       - GROUP_NAME=DATABASE
     depends_on:
@@ -64,7 +64,7 @@ services:
       - NUXT_LICENSE_KEY=${LICENSE_KEY:-}
       - NUXT_MONGO_CONNECTION_STRING=mongodb://${MONGO_ROOT_USER:-root}:${MONGO_ROOT_PASS:?}@mongo:27017/Litlyx?authSource=admin
       - NUXT_REDIS_URL=redis://redis:6379
-      - NUXT_REDIS_USERNAME=${REDIS_USER:-}
+      - NUXT_REDIS_USERNAME=${REDIS_USER:-default}
       - NUXT_REDIS_PASSWORD=${REDIS_PASS:?}
       - NUXT_BASE_URL=http://127.0.0.1:3000
       - NUXT_SESSION_PASSWORD=${JWT_SECRET:?}
